@@ -65,21 +65,21 @@ void agregarEnPosicion(apu_nodo &inicial, apu_nodo &actual, int &ban, int val, i
     temp->sig = aux;
     if (temp == actual) actual = aux;
 
-    printf("Nodo agregado en la posición %d.\n", pos);
+    printf("Nodo agregado en la posicion %d.\n", pos);
 }
 
 // Borrar nodos
 
 void eliminarNodoPorPosicion(apu_nodo &inicial, apu_nodo &actual, int &ban, int pos) {
     if (ban == 0) {
-        printf("La lista está vacía.\n");
+        printf("La lista esta vacia.\n");
         return;
     }
 
     apu_nodo prev = actual, temp = inicial;
     int contador = 1;
 
-    // Si el nodo a eliminar está en la primera posición
+    // Si el nodo a eliminar esta en la primera posicion
     if (pos == 1) {
         if (temp == inicial && temp == actual) {
             delete temp;
@@ -90,34 +90,33 @@ void eliminarNodoPorPosicion(apu_nodo &inicial, apu_nodo &actual, int &ban, int 
             actual->sig = inicial;
             delete temp;
         }
-        printf("Nodo en la posición 1 eliminado correctamente.\n");
+        printf("Nodo en la posicion 1 eliminado correctamente.\n");
         return;
     }
 
-    // Buscar el nodo en la posición dada
+    // Buscar el nodo en la posicion dada
     while (contador < pos && temp->sig != inicial) {
         prev = temp;
         temp = temp->sig;
         contador++;
     }
 
-    // Si el nodo existe en la posición proporcionada
+    // Si el nodo existe en la posicion proporcionada
     if (contador == pos) {
         prev->sig = temp->sig;
         if (temp == actual) actual = prev;
         delete temp;
-        printf("Nodo en la posición %d eliminado correctamente.\n", pos);
+        printf("Nodo en la posicion %d eliminado correctamente.\n", pos);
     } else {
-        printf("Posición no válida.\n");
+        printf("Posicion no valida.\n");
     }
 }
-
 
 // Modificar nodo
 
 void modificarNodoPorPosicion(apu_nodo inicial, int ban, int pos, int nuevoValor) {
     if (ban == 0) {
-        printf("La lista está vacía.\n");
+        printf("La lista esta vacia.\n");
         return;
     }
 
@@ -131,9 +130,9 @@ void modificarNodoPorPosicion(apu_nodo inicial, int ban, int pos, int nuevoValor
 
     if (contador == pos) {
         temp->valor = nuevoValor;
-        printf("Nodo en la posición %d modificado correctamente.\n", pos);
+        printf("Nodo en la posicion %d modificado correctamente.\n", pos);
     } else {
-        printf("Posición no encontrada.\n");
+        printf("Posicion no encontrada.\n");
     }
 }
 
@@ -147,7 +146,7 @@ void mostrarLista(apu_nodo inicial, int ban) {
 
     apu_nodo temp = inicial;
     int i = 1;
-    
+
     while (true) {
         printf("El valor del nodo %d es = %d\n", i, temp->valor);
         temp = temp->sig;
@@ -160,7 +159,7 @@ void mostrarLista(apu_nodo inicial, int ban) {
 
 void buscarNodoPorPosicion(apu_nodo inicial, int ban, int pos) {
     if (ban == 0) {
-        printf("La lista está vacía.\n");
+        printf("La lista esta vacia.\n");
         return;
     }
 
@@ -173,12 +172,11 @@ void buscarNodoPorPosicion(apu_nodo inicial, int ban, int pos) {
     }
 
     if (contador == pos) {
-        printf("Nodo en la posición %d tiene el valor: %d\n", pos, temp->valor);
+        printf("Nodo en la posicion %d tiene el valor: %d\n", pos, temp->valor);
     } else {
-        printf("Posición no encontrada.\n");
+        printf("Posicion no encontrada.\n");
     }
 }
-
 
 int main(void) {
     int it = 1, opc, val, nuevoVal, pos, ban = 0;
@@ -189,9 +187,9 @@ int main(void) {
         printf("1. Agregar nodo al inicio\n");
         printf("2. Agregar nodo al final\n");
         printf("3. Agregar nodo en una posicion\n");
-        printf("4. Eliminar nodo por posición\n");
-        printf("5. Modificar nodo por posición\n");
-        printf("6. Buscar nodo por posición\n");
+        printf("4. Eliminar nodo por posicion\n");
+        printf("5. Modificar nodo por posicion\n");
+        printf("6. Buscar nodo por posicion\n");
         printf("7. Mostrar nodos\n");
         printf("8. Salir\n");
         printf("Que opcion quieres realizar: ");
@@ -216,19 +214,19 @@ int main(void) {
                 agregarEnPosicion(inicial, actual, ban, val, pos);
                 break;
             case 4:
-                printf("Ingresa la posición del nodo a eliminar: ");
+                printf("Ingresa la posicion del nodo a eliminar: ");
                 scanf("%d", &pos);
                 eliminarNodoPorPosicion(inicial, actual, ban, pos);
                 break;
             case 5:
-                printf("Ingresa la posición del nodo a modificar: ");
+                printf("Ingresa la posicion del nodo a modificar: ");
                 scanf("%d", &pos);
                 printf("Ingresa el nuevo valor: ");
                 scanf("%d", &nuevoVal);
                 modificarNodoPorPosicion(inicial, ban, pos, nuevoVal);
                 break;
-                case 6:
-                printf("Ingresa la posición del nodo a buscar: ");
+            case 6:
+                printf("Ingresa la posicion del nodo a buscar: ");
                 scanf("%d", &pos);
                 buscarNodoPorPosicion(inicial, ban, pos);
                 break;
